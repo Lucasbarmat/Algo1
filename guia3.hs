@@ -3,7 +3,6 @@ f :: Integer ->Integer
 f 1 = 8
 f 4 = 131
 f 16 = 16
-
 --1b)
 g :: Integer ->Integer
 g 8 = 16
@@ -19,12 +18,10 @@ k x = g(f x)
 absoluto :: Integer ->Integer
 absoluto x  | x >= 0 = x
             | otherwise = (-x)
-
 --2b)devuelve el m´aximo entre el valor absoluto de dos n´umeros enteros.
 maximoabsoluto :: Integer ->Integer ->Integer
 maximoabsoluto x y  | (absoluto x) >= (absoluto y)  = x
                     | otherwise = y
-
 --2c) devuelve el maximo entre tres numeros enteros.
 maximo3 :: Integer ->Integer ->Integer ->Integer
 maximo3 x y z   | x >= y && x >= z = x
@@ -63,6 +60,20 @@ posPrimerPar (a,b,c) | mod a 2 == 0 = 1 -- mod es el resto de la división por 2
                         | mod b 2 == 0 = 2
                         | mod c 2 == 0 = 3
                         | otherwise = 4
+                        
+--5) . Implementar la funci´on todosMenores 
+todosMenores :: (int,int,int) ->Bool
+todosMenores (a,b,c)   | f1 a > g1 a && f1 b > g1 b && f1 c > g1 c = True
+                    | otherwise = False
+
+f1 :: int ->int
+f1 x    | x <= 7 = x*x
+        | x > 7 = 2*x -1
+
+g1 :: int ->int
+g1 x    | mod x 2 == 0 = x / 2
+        | otherwise = 3*x +1
+
 
 -- EJERCICIO 6
 problemabisiesto :: Integer -> Bool
@@ -79,4 +90,3 @@ distanciaManhattan :: (Float, Float, Float) ->(Float, Float, Float) ->Float
 distanciaManhattan (a, b, c) (d, e, f) = absoluto1 (a-d) + absoluto1 (b-e) + absoluto1 (c-f)
 
 --Ejercicio 8. Implementar una función comparar:
---hola
