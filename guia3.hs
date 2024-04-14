@@ -79,3 +79,4 @@ distanciaManhattan :: (Float, Float, Float) ->(Float, Float, Float) ->Float
 distanciaManhattan (a, b, c) (d, e, f) = absoluto1 (a-d) + absoluto1 (b-e) + absoluto1 (c-f)
 
 --Ejercicio 8. Implementar una función comparar:
+-
