@@ -36,3 +36,19 @@ esDivisible :: Integer ->Integer ->Bool
 esDivisible x y | x == 0 = True
                 | x > y = False
                 | x > 0 = 0
+
+
+
+
+--Ejercicio 7. Implementar la funci´on todosDigitosIguales :: Integer ->Bool que determina si todos los d´ıgitos de un
+--n´umero natural son iguales, es decir
+todosDigitosIguales :: Integer ->Bool
+todosDigitosIguales x   | 0 < x && x < 10 = True
+                        | digitounidades (x) /= digitounidades(sacarunidades(x)) = False
+                        | otherwise = todosDigitosIguales (sacarunidades (x))
+
+digitounidades :: Integer ->Integer
+digitounidades x = mod x 10
+
+sacarunidades :: Integer ->Integer
+sacarunidades x = div x 10
