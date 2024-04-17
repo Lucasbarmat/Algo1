@@ -52,3 +52,5 @@ digitounidades x = mod x 10
 
 sacarunidades :: Integer ->Integer
 sacarunidades x = div x 10
+
+https://github.com/Luloide/IP/blob/main/Practicas%2FSoluciones%2Fpractica4.hs
