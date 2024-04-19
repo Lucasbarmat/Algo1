@@ -48,21 +48,24 @@ factorial x | x == 0 = 1
 
 sumaDigitos :: Integer ->Integer
 sumaDigitos x   | x < 10 = x
-                | otherwise = digitounidades (x) + sumaDigitos (sacarunidades (x)) 
+                | otherwise = ultimodigito (x) + sumaDigitos (sacarunidades (x)) 
 
 --Ejercicio 7. Implementar la funci´on todosDigitosIguales :: Integer ->Bool que determina si todos los d´ıgitos de un
 --n´umero natural son iguales, es decir
 todosDigitosIguales :: Integer ->Bool
 todosDigitosIguales x   | 0 < x && x < 10 = True
-                        | digitounidades (x) /= digitounidades(sacarunidades(x)) = False
+                        | ultimodigito (x) /= ultimodigito(sacarunidades(x)) = False
                         | otherwise = todosDigitosIguales (sacarunidades (x))
 
-digitounidades :: Integer ->Integer
-digitounidades x = mod x 10
+ultimodigito :: Integer ->Integer
+ultimodigito x = mod x 10
 
 sacarunidades :: Integer ->Integer
 sacarunidades x = div x 10
 
+primerdigito:: Integer ->Integer
+primerdigito x  | cantidadigitos x == 1 = x
+                | otherwise = primerdigito (sacarunidades (x))
 
 --Ejercicio 8. Implementar la funci´on iesimoDigito :: Integer ->Integer ->Integer que dado un n ∈ Z mayor o igual
 --a 0 y un i ∈ Z mayor o igual a 1 menor o igual a la cantidad de d´ıgitos de n, devuelve el i-´esimo d´ıgito de n.
@@ -78,3 +81,18 @@ cantidadigitos :: Integer ->Integer
 cantidadigitos x    | x == 0 = 0
                     | otherwise = 1 + cantidadigitos (sacarunidades(x))
 
+-- Ejercicio 9. Especificar e implementar una funcion esCapicua :: Integer ->Bool que dado n ∈ N≥0 determina si n es
+-- un numero capicua.
+-- saber la cantidad de digitos de X
+-- PAR: IGUALAR LA PRIMER MITAD CON LA SEGUNDA MITAD
+-- IMPAR: IGUALAR LA PRIMER MITAD (SACANDO LA MITAD + 1) IGUALANDO CON LOS ULTIMOS MITAD NUMEROS
+
+
+--esCapicua :: Integer ->Bool
+--esCapicua x = True == (div x (10^(parteEntera((fromIntegral(cantidadigitos(x)))/2))) = ... )
+
+esCapicua :: Integer -> Bool
+esCapicua x     | cantidadigitos x == 1 = True
+                | primerdigito (x) == ultimodigito (x) = esCapicua(sacarunidades(x - (primerdigito x * 10^(cantidadigitos x - 1)))) 
+                | otherwise = False
+        
