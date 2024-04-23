@@ -103,5 +103,4 @@ f2 x y  | x == 0 = 0
 
 --c) 
 f3 :: Integer ->Integer ->Integer
-f3 n q  | n == 0 = 0
-        | otherwise = q^(2*n) + (f3 (n-1) q)
+f3 n q  = f2 (2*n) q
