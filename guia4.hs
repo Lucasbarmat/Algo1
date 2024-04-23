@@ -83,16 +83,25 @@ cantidadigitos x    | x == 0 = 0
 
 -- Ejercicio 9. Especificar e implementar una funcion esCapicua :: Integer ->Bool que dado n ∈ N≥0 determina si n es
 -- un numero capicua.
--- saber la cantidad de digitos de X
--- PAR: IGUALAR LA PRIMER MITAD CON LA SEGUNDA MITAD
--- IMPAR: IGUALAR LA PRIMER MITAD (SACANDO LA MITAD + 1) IGUALANDO CON LOS ULTIMOS MITAD NUMEROS
-
-
---esCapicua :: Integer ->Bool
---esCapicua x = True == (div x (10^(parteEntera((fromIntegral(cantidadigitos(x)))/2))) = ... )
 
 esCapicua :: Integer -> Bool
 esCapicua x     | cantidadigitos x == 1 = True
                 | primerdigito (x) == ultimodigito (x) = esCapicua(sacarunidades(x - (primerdigito x * 10^(cantidadigitos x - 1)))) 
                 | otherwise = False
-        
+
+
+--Ejercicio 10. Especificar, implementar y dar el tipo de las siguientes funciones (sımil Ejercicio 4 Pr´actica 2 de Algebra 1).
+-- a)
+f1 :: Integer ->Integer
+f1 (-1) = 0
+f1 x = 2^x + f1(x-1)
+
+--b)
+f2 :: Integer ->Integer ->Integer
+f2 x y  | x == 0 = 0
+        | otherwise = y^x + (f2 (x-1) y)
+
+--c) 
+f3 :: Integer ->Integer ->Integer
+f3 n q  | n == 0 = 0
+        | otherwise = q^(2*n) + (f3 (n-1) q)
