@@ -39,9 +39,9 @@ medioFact x | x == 0 = 1
             | x == (-1) = 1
             | otherwise = x * (medioFact (x-2))
 
-factorial :: Integer ->Integer
-factorial x | x == 0 = 1
-            | otherwise = x * (factorial (x-1))
+factorial :: Integer ->Float
+factorial x | x == 0 = 1.0
+            | otherwise = fromIntegral x * factorial (x-1)
 
 -- Ejercicio 6. Especificar e implementar la funci´on sumaDigitos :: Integer ->Integer que calcula la suma de dıgitos de
 -- un numero natural. Para esta funci´on pueden utilizar div y mod.
@@ -103,4 +103,23 @@ f2 x y  | x == 0 = 0
 
 --c) 
 f3 :: Integer ->Integer ->Integer
-f3 n q  = f2 (2*n) q
+f3 n q = f2 (2*n) q
+
+--d) 
+f4 :: Integer ->Integer ->Integer
+f4 n q = f3 n q - f2 (n-1) q
+
+--Ejercicio 11. a) Especificar e implementar una funci´on eAprox :: Integer ->Float que aproxime el valor del n´umero e
+--a partir de la siguiente sumatoria
+
+eAprox :: Integer -> Float
+eAprox x | x == 0 = 1
+         | otherwise = (eAprox (x - 1)) + (1 / factorial x)
+
+--Ejercicio 12. Para n ∈ N se define la sucesi´on
+raizDe2Aprox :: Integer ->Float
+raizDe2Aprox x  = susucesionA x - 1
+
+susucesionA :: Integer ->Float
+susucesionA x   | x == 0 = 2
+                | otherwise = 2 + (1/ (raizDe2Aprox (x-1)))

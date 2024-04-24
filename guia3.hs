@@ -62,17 +62,16 @@ posPrimerPar (a,b,c) | mod a 2 == 0 = 1 -- mod es el resto de la división por 2
                         | otherwise = 4
                         
 --5) . Implementar la funci´on todosMenores 
-todosMenores :: (int,int,int) ->Bool
-todosMenores (a,b,c)   | f1 a > g1 a && f1 b > g1 b && f1 c > g1 c = True
-                    | otherwise = False
+todosMenores :: (Integer, Integer, Integer) -> Bool
+todosMenores (a,b,c) | f5 a > g5 a && f5 b > g5 b && f5 c > g5 c = True
+                     | otherwise = False
 
-f1 :: int ->int
-f1 x    | x <= 7 = x*x
-        | x > 7 = 2*x -1
+f5 :: Integer -> Integer
+f5 x    | x <= 7 = x*2
+        | otherwise = (2*x) -1
 
-g1 :: int ->int
-g1 x    | mod x 2 == 0 = x / 2
-        | otherwise = 3*x +1
+g5 :: Integer -> Integer
+g5 n = if mod n 2 == 0 then div n 2 else 3*n + 1
 
 
 -- EJERCICIO 6
@@ -90,3 +89,8 @@ distanciaManhattan :: (Float, Float, Float) ->(Float, Float, Float) ->Float
 distanciaManhattan (a, b, c) (d, e, f) = absoluto1 (a-d) + absoluto1 (b-e) + absoluto1 (c-f)
 
 --Ejercicio 8. Implementar una función comparar:
+
+
+factorial :: Integer -> Float
+factorial 0 = 1.0
+factorial n = fromIntegral n * factorial (n-1)
