@@ -18,3 +18,4 @@ principio (x:xs)    | longitud (x:xs) == 1 = []
 reverso :: (Eq t) => [t] -> [t]
 reverso (x:xs) | xs == [] = [x]
                | otherwise = (reverso xs ) ++ [x]
+            
