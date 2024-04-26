@@ -49,5 +49,17 @@ quitarTodos e (x:xs)    | not (pertenece e (x:xs)) = (x:xs)
 --7) eliminarRepetidos :: (Eq t) => [t] -> [t] que deja en la lista una ´unica aparici´on de cada elemento, eliminando
 --las repeticiones adicionales.
 eliminarRepetidos :: (Eq t) => [t] -> [t]
-eliminarRepetidos (x:xs)    | todosDistintos (x:xs) = x:xs
-                            | 
+eliminarRepetidos (x:xs)    | xs == [] = (x:xs)
+                            | pertenece x xs = eliminarRepetidos xs
+                            | otherwise = (x: eliminarRepetidos xs)
+
+--8)mismosElementos :: (Eq t) => [t] -> [t] -> Bool, que dadas dos listas devuelve verdadero s´ı y solamente s´ı
+--ambas listas contienen los mismos elementos, sin tener en cuenta repeticiones, es decir:
+
+
+mismosElementoss :: (Eq t) => [t] -> [t] -> Bool
+mismosElementos xtotal 
+mismosElementoss (x:xs) (l:ls)  | (xs == []  && ls ==[]) = True
+                                | pertenece x (eliminarRepetidos(l:ls)) && pertenece l (eliminarRepetidos(x:xs)) = mismosElementoss xs ls
+                                | otherwise = False
+
