@@ -69,7 +69,6 @@ capicua t   | t == [] = True
             | t == reversoo t = True
             | otherwise = False
 
-
 --Ejercicio 3. Definir las siguientes funciones sobre listas de enteros:
 --3.1) sumatoria :: [Integer] -> Integer seg´un la siguiente especificaci´on:
 sumatoria :: [Integer] -> Integer 
@@ -82,12 +81,82 @@ productoria [] = 1
 productoria (x:xs) = x * (productoria xs)
 
 --3.3) maximo :: [Integer] -> Integer seg´un la siguiente especificaci´on:
---problemamaximo :: [Integer] -> Integer 
---problemamaximo (x:xs) 
-
+problemamaximo :: [Integer] -> Integer 
+problemamaximo (x:xs)   | xs == [] = x
+                        | mayorlista x xs = x
+                        | otherwise = problemamaximo xs
 
 mayorlista :: Integer -> [Integer] ->Bool
 mayorlista t (x:xs) | t < x = False
                     | xs == [] = True
                     | otherwise = mayorlista t xs
                     
+-- 3.4) sumarN :: Integer -> [Integer] -> [Integer] seg´un la siguiente especificaci´on
+sumarN :: Integer -> [Integer] -> [Integer]
+sumarN t [] = []
+sumarN t (x:xs) | xs == [] = [t+x]
+                | otherwise = [t+x] ++ (sumarN t xs)
+
+--3.5) sumarElPrimero :: [Integer] -> [Integer] seg´un la siguiente especificaci´on
+sumarElPrimero :: [Integer] -> [Integer]
+sumarElPrimero [] = []
+sumarElPrimero (x:xs) = (sumarN x (x:xs)) 
+
+--3.6) sumarElUltimo :: [Integer] -> [Integer] seg´un la siguiente especificaci´on:
+sumarElUltimo :: [Integer] -> [Integer]
+sumarElUltimo [] = []
+sumarElUltimo (x:xs) = (sumarN (ultimo xs) (x:xs))
+
+--3.7)  pares :: [Integer] -> [Integer] seg´un la siguiente especificaci´on:
+pares :: [Integer] -> [Integer]
+pares [] = []
+pares (x:xs)    | espar x = [x] ++ pares xs
+                | otherwise = pares xs 
+espar :: Integer ->Bool
+espar 0 = False
+espar x | mod x 2 == 0 = True
+        | otherwise = False
+
+-- 3.8) multiplosDeN :: Integer -> [Integer] -> [Integer] que dado un n´umero n y una lista xs, devuelve una lista
+--con los elementos de xs m´ultiplos de n.
+multiplosDeN :: Integer -> [Integer] -> [Integer]
+multiplosDeN t [] = []
+multiplosDeN t (x:xs)   | esmultiplo x t = [x] ++ (multiplosDeN t xs)
+                        | otherwise = multiplosDeN t xs
+esmultiplo :: Integer->Integer->Bool
+esmultiplo _ 0 = False
+esmultiplo 0 _ = False
+esmultiplo x y  | mod x y == 0 = True
+                | otherwise = False
+
+--3.9) ordenar :: [Integer] -> [Integer] que ordena los elementos de la lista en forma creciente. Sugerencia: Pensar
+--c´omo pueden usar la funci´on m´aximo para que ayude a generar la lista ordenada necesaria.
+ordenar :: [Integer] -> [Integer]
+ordenar [] = []
+ordenar x = ordenar ((quitar (problemamaximo x) x)) ++ [problemamaximo x] 
+
+--Ejercicio 4. a) Definir las siguientes funciones sobre listas de caracteres, interpretando una palabra como una secuencia de
+--caracteres sin blancos:
+--4.A) sacarBlancosRepetidos :: [Char] -> [Char], que reemplaza cada subsecuencia de blancos 
+--contiguos de la primera lista por un solo blanco en la lista resultado.
+sacarBlancosRepetidos :: [Char] -> [Char]
+sacarBlancosRepetidos [] = []
+sacarBlancosRepetidos (x:xs)    | (x == ' ') && (head xs == ' ') = sacarBlancosRepetidos xs
+                                | otherwise = x : sacarBlancosRepetidos xs
+
+--4.B)  contarPalabras :: [Char] -> Integer, que dada una lista de caracteres devuelve la cantidad de palabras que
+--tiene.
+contarPalabras :: [Char] -> Integer
+contarPalabras [] = 0
+contarPalabras l = contarPalabrasSinRep (arrancaConBlanco(sacarBlancosRepetidos l))
+
+contarPalabrasSinRep :: [Char] ->Integer
+contarPalabrasSinRep [] = 0
+contarPalabrasSinRep [x] = 1
+contarPalabrasSinRep (x:xs) | x == ' ' = 1 +  contarPalabrasSinRep xs
+                            | otherwise = contarPalabrasSinRep xs
+
+arrancaConBlanco :: [Char] ->[Char]
+arrancaConBlanco x  | head x == ' ' = tail x
+                    | otherwise = x
+                
