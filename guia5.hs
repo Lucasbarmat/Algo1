@@ -159,4 +159,83 @@ contarPalabrasSinRep (x:xs) | x == ' ' = 1 +  contarPalabrasSinRep xs
 arrancaConBlanco :: [Char] ->[Char]
 arrancaConBlanco x  | head x == ' ' = tail x
                     | otherwise = x
+
+
+--4.C) ) palabras :: [Char] -> [[Char]], que dada una lista arma una nueva lista con las palabras de la lista original.
+
+palabras :: [Char] -> [[Char]]
+palabras x = f1palabras x x                         
+
+f1palabras :: [Char] ->[Char] ->[[Char]]
+f1palabras [] t = [primerpalabra t]
+f1palabras (x:xs) t | x == ' ' = primerpalabra t : f1palabras xs xs 
+                    | otherwise = f1palabras xs t
+
+primerpalabra :: [Char] ->  [Char]
+primerpalabra [] = []
+primerpalabra (x:xs)    | x == ' ' = []
+                        | otherwise = x : primerpalabra xs
+
+
+
+--4.D) palabraMasLarga :: [Char] -> [Char], que dada una lista de caracteres devuelve su palabra m´as larga.
+--palabraMasLarga :: [Char] -> [Char]
+--palabraMasLarga (x:xs)  | (contarletras (primerpalabra x)) 
+
+--contarletras:: [Char] ->Integer
+--contarletras [] = 0
+--contarletras (x:xs)   | x == ' ' = 0
+  --                      | otherwise = 1 + contarletras xs
+
+
+
+--problemamaximo :: [Integer] -> Integer 
+--problemamaximo (x:xs)   | xs == [] = x
+--                        | mayorlista x xs = x
+--                        | otherwise = problemamaximo xs
+
+--mayorlista :: Integer -> [Integer] ->Bool
+--mayorlista t (x:xs) | t < x = False
+--                    | xs == [] = True
+--                    | otherwise = mayorlista t xs
+
+
+--Ejercicio 5. Definir las siguientes funciones sobre listas
+--5.1) sumaAcumulada :: (Num t) => [t] -> [t] seg´un la siguiente especificaci´on:
+sumaAcumulada :: (Num t) => [t] -> [t]
+sumaAcumulada [] = []
+sumaAcumulada x = sumaAcumulada (quitarultimo x) ++ [sumaAnteriores x]
+
+sumaAnteriores :: (Num p) => [p] -> p
+sumaAnteriores [] = 0
+sumaAnteriores (x:xs) = x + sumaAnteriores xs
+
+quitarultimo :: (Num t) => [t] ->[t]
+quitarultimo (x:xs) | null xs = []
+                    | otherwise = x : quitarultimo xs 
+
+
+--5.2) descomponerEnPrimos :: [Integer] -> [[Integer]] seg´un la siguiente especificaci´on:
+descomponerEnPrimos :: [Integer] -> [[Integer]]
+descomponerEnPrimos [] = []
+descomponerEnPrimos 
+
+
+primosquedividen :: Integer -> Integer -> [Integer]
+primosquedividen x y    | x == 0 || y == 1 = []
+primosquedividen 
+
+--funcionesAxuliares:
+
+menorDivisor :: Integer ->Integer
+menorDivisor n = menorDivisorHasta n 2
+
+menorDivisorHasta :: Integer -> Integer -> Integer -- se requiere que q == 2
+menorDivisorHasta n q | mod n q == 0 = q
+                      | otherwise = menorDivisorHasta n (q+1)
+
+esPrimo :: Integer ->Bool
+esPrimo n | menorDivisor n == n = True
+          | otherwise = False 
+          
                 
