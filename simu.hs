@@ -45,3 +45,47 @@ relacionEquivalente (ax, ay) (bx, by) =
  
 personas :: [(String, String)] ->[String]
 personas 
+
+
+
+
+-- 1) Atajaron Suplentes
+atajaronSuplente :: [(String, String)] -> [Int] ->Int ->Int
+atajaronSuplente _ goles totalgoles = totalgoles - golesASuplentes goles
+
+golesASuplentes :: [Int] ->Int
+golesASuplentes [] = 0
+golesASuplentes (x:xs) = x + golesASuplentes xs
+ 
+ --2) Equipos Validos
+--no contiene nombres de clubes repetidos
+--ni arqueros repetidos
+--ni jugadores con nombre del club
+
+
+equiposValidos :: [(String, String)] ->Bool
+equiposValidos [] = True
+equiposValidos ((a,b): xs) = (a /= b) && (nopertenece (a,b) xs) && (equiposValidos xs)
+
+nopertenece :: (String, String) -> [(String, String)] ->Bool
+nopertenece _ [] = True
+nopertenece (a,b) ((a1,b1):xs) = (a /= a1) && (a /= b1) && (b /= a1) && (b /= b1) && (nopertenece (a,b) xs)
+
+--3) porcentje de goles 
+--                   arquero  [goles] totalgoles   porcentaje
+porcentajeDeGoles :: String ->[(String, String)] -> [Int] -> Float
+porcentajeDeGoles " " _ _ = 0.0
+porcentajeDeGoles arquero ((a,b):xs) listagoles = division ((porcentajeAUX arquero ((a,b):xs) listagoles)*100) (cantidad listagoles)
+
+porcentajeAUX :: String -> [(String, String)] ->[Int] -> Int
+porcentajeAUX arquero ((a,b):xs) (t:ts) | arquero == b = t 
+                                        | otherwise = porcentajeAUX arquero xs ts
+
+cantidad :: [Int] ->Int
+cantidad [] = 0
+cantidad (x:xs) = x + cantidad xs
+
+division :: Int -> Int -> Float
+division a b = fromIntegral a / fromIntegral b
+
+-- 
