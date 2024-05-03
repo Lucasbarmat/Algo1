@@ -68,15 +68,16 @@ amigosDe persona ((a,b):x)  | persona == a = [b] ++ amigosDe persona x
 
 
 personaConMasAmigos :: [(String, String)]  -> String
-personaConMasAmigos [] = []
---personaConMasAmigos (x:xs)  | contarPalabrasIguales (x (juntarlista (xs))) 
+personaConMasAmigos [] = " "
+personaConMasAmigos ((a,b):x) = comparar (juntarlista(((a,b):x)))
 
-contarPalabrasIguales :: String ->[String] -> Int
-contarPalabrasIguales _ [] = 0
-contarPalabrasIguales y (x:xs)  | y == x = 1 + contarPalabrasIguales y xs  
-                                | otherwise = contarPalabrasIguales y xs
+comparar :: [String]-> String
+comparar [] = " "
+comparar [x] = x
+comparar (x:xs) | (contarpalabras x (x:xs)) >= (contarpalabras (head xs) (x:xs)) = comparar (x: (tail xs ))
+                | otherwise = comparar xs
 
-contarPalabrasIguales1 :: [String] -> Int
-contarPalabrasIguales1 [] = 0
-contarPalabrasIguales1 (x:xs) | x == (head xs) = 1 + contarPalabrasIguales1 (x :(tail xs))
-                              | otherwise = contarPalabrasIguales1 (x :(tail xs))
+contarpalabras :: String ->[String] ->Int
+contarpalabras _ [] = 0
+contarpalabras n (x:xs) | n == x = 1 + contarpalabras n xs
+                        | otherwise = contarpalabras n xs
