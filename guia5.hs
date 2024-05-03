@@ -216,14 +216,10 @@ quitarultimo (x:xs) | null xs = []
 
 
 --5.2) descomponerEnPrimos :: [Integer] -> [[Integer]] seg´un la siguiente especificaci´on:
-descomponerEnPrimos :: [Integer] -> [[Integer]]
-descomponerEnPrimos [] = []
-descomponerEnPrimos 
 
 
-primosquedividen :: Integer -> Integer -> [Integer]
-primosquedividen x y    | x == 0 || y == 1 = []
-primosquedividen 
+
+
 
 --funcionesAxuliares:
 
@@ -239,3 +235,7 @@ esPrimo n | menorDivisor n == n = True
           | otherwise = False 
           
                 
+contarPalabrasIguales1 :: [String] -> Int
+contarPalabrasIguales1 [] = 0
+contarPalabrasIguales1 (x:xs) | x == (head xs) = 1 + contarPalabrasIguales1 (x :(tail xs))
+                              | otherwise = contarPalabrasIguales1 (x :(tail xs))

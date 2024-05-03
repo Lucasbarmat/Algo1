@@ -10,16 +10,55 @@
     --}
     --1 A los fines de este problema consideraremos que dos tuplas son iguales si el par de elementos que las componen (sin importar el orden) son iguales.
  
+-- NO SE REPITAN LAS TUPLAS
+-- NO HAY TUPLAS CON LOS MISMOS COMPEONENETES EN OTRO ORDEN
+
+relacionesValidas :: [(String, String)] ->Bool
+relacionesValidas [] = True
+relacionesValidas ((a,b):x) = (a /= b) && not(estaEnLaLista (a,b) x) && (relacionesValidas x) 
+
+estaEnLaLista :: (String, String) ->[(String, String)] ->Bool
+estaEnLaLista _ [] = False
+estaEnLaLista (a,b) (x:xs) = ((a,b) == x) ||  ((b,a) == x) || (estaEnLaLista (a,b) xs)
+
+
+
     --problema personas (relaciones: seq⟨String x String⟩) : seq⟨String⟩ {
       --requiere: {relacionesValidas(relaciones)}
       --asegura: {res no tiene elementos repetidos}
       --asegura: {res tiene exactamente los elementos que figuran en alguna tupla de relaciones, en cualquiera de sus posiciones}
     --}
- 
+
+
+personas :: [(String,String)] -> [String]
+personas [] = []
+personas x = eliminarRepetidoss (juntarlista(x))
+
+juntarlista :: [(String,String)] -> [String]
+juntarlista [] = []
+juntarlista ((a,b):x) = [a] ++ [b] ++ juntarlista x
+
+eliminarRepetidoss :: [String] ->[String]
+eliminarRepetidoss [] = []
+eliminarRepetidoss (x:xs) | (pertenecee x xs) = eliminarRepetidoss xs 
+                          | otherwise = [x] ++ eliminarRepetidoss xs
+
+pertenecee :: String -> [String] ->Bool
+pertenecee _ [] = False
+pertenecee a (x:xs) | a == x = True
+                    | otherwise = pertenecee a xs
+
     --problema amigosDe (persona: String, relaciones: seq⟨String x String⟩) : seq⟨String⟩ {
       --requiere: {relacionesValidas(relaciones)}
       --asegura: {res tiene exactamente los elementos que figuran en las tuplas de relaciones en las que una de sus componentes es persona}
     --}
+
+amigosDe :: String -> [(String,String)] -> [String]
+amigosDe _ [] = []
+amigosDe persona ((a,b):x)  | persona == a = [b] ++ amigosDe persona x
+                            | persona == b = [a] ++ amigosDe persona x
+                            | otherwise = amigosDe persona x
+
  
     --problema personaConMasAmigos (relaciones: seq⟨String x String⟩) : String {
       --requiere: {relaciones no vacía}
@@ -28,25 +67,16 @@
     --}
 
 
-relacionesValidas :: [(String, String)] -> Bool
-relacionesValidas [] = True
-relacionesValidas (x:xs) = noRepetida x && not (relContenido x xs) && relacionesValidas xs
- 
-noRepetida :: (String, String) -> Bool
-noRepetida (a, b) = a /= b
- 
-relContenido :: (String, String) -> [(String, String)] -> Bool
-relContenido _ [] = False
-relContenido j1 (j2:xs) = relacionEquivalente j1 j2 || relContenido j1 xs
- 
-relacionEquivalente :: (String, String) -> (String, String) -> Bool
-relacionEquivalente (ax, ay) (bx, by) =
-    (ax == bx && ay == by) || (ax == by && ay == bx)
- 
-personas :: [(String, String)] ->[String]
-personas 
+personaConMasAmigos :: [(String, String)]  -> String
+personaConMasAmigos [] = []
+--personaConMasAmigos (x:xs)  | contarPalabrasIguales (x (juntarlista (xs))) 
 
+contarPalabrasIguales :: String ->[String] -> Int
+contarPalabrasIguales _ [] = 0
+contarPalabrasIguales y (x:xs)  | y == x = 1 + contarPalabrasIguales y xs  
+                                | otherwise = contarPalabrasIguales y xs
 
-
-
-
+contarPalabrasIguales1 :: [String] -> Int
+contarPalabrasIguales1 [] = 0
+contarPalabrasIguales1 (x:xs) | x == (head xs) = 1 + contarPalabrasIguales1 (x :(tail xs))
+                              | otherwise = contarPalabrasIguales1 (x :(tail xs))

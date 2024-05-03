@@ -56,3 +56,7 @@ menornumero :: Int ->[Int] ->Bool
 menornumero _ [] = True
 menornumero g (x:xs) = (g <= x) && (menornumero g xs)
 
+contarPalabrasIguales1 :: [String] -> Int
+contarPalabrasIguales1 [] = 0
+contarPalabrasIguales1 (x:xs) | x == (head xs) = 1 + contarPalabrasIguales1 (x :(tail xs))
+                              | otherwise = contarPalabrasIguales1 (x :(tail xs))
