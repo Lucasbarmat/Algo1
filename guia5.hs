@@ -188,7 +188,6 @@ primerpalabra (x:xs)    | x == ' ' = []
   --                      | otherwise = 1 + contarletras xs
 
 
-
 --problemamaximo :: [Integer] -> Integer 
 --problemamaximo (x:xs)   | xs == [] = x
 --                        | mayorlista x xs = x
