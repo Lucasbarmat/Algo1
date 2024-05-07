@@ -43,3 +43,13 @@ division :: Int -> Int -> Float
 division a b = fromIntegral a / fromIntegral b
 
 --4) 
+vallaMenosVencida :: [(String, String)] -> [Int] -> String
+vallaMenosVencida [(equipo, arquero)] [x] = arquero
+vallaMenosVencida ((equipo, arquero):xs) (g:gs) | (g == menorNumeroDeGoles (g:gs)) = arquero
+                                                | otherwise = vallaMenosVencida xs gs
+
+menorNumeroDeGoles :: [Int] -> Int
+menorNumeroDeGoles [x] = x
+menorNumeroDeGoles (g1:g2:gs)   | (g1 <= g2) = menorNumeroDeGoles (g1:gs)
+                                | otherwise = menorNumeroDeGoles (g2:gs)
+
