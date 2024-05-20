@@ -1,4 +1,5 @@
---1) 
+module MiercolesMañana where
+
 -- RES = cantidad de productos distintos que hay en PRODUCTOS
 -- RES = ((ELEMENTO 1),(ELEMENTO 2))
 --ELEMENTO 1: producto
