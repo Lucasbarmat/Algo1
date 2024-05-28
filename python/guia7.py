@@ -41,17 +41,71 @@ def suma_total(s:list)->int:
 #print(suma_total([1,2,4,8]))
 
 #ej 1.4)
-def ordenados(s:list)->bool:
+
     
 #ej 1.5)
 #ej 1.6)
 #ej 1.7)
+def analizar_contra(contraseña:str)->str:
+    if es_verde(contraseña):
+        return "verde"
+    else:
+        if es_roja (contraseña):
+            return "roja"
+        else:
+            return "amarilla"
+        
+
+
+def es_roja(contraseña:str)->bool:
+    if len(contraseña) < 5:
+        return True
+    return False
+
+def es_verde(contraseña:str)->bool:
+    if (longitud_mayor_ocho (contraseña)) and (una_minuscula (contraseña)) and (una_mayucula (contraseña)) and (un_digito (contraseña)):
+        return True
+    return False
+
+
+
+def longitud_mayor_ocho(contraseña:str)->bool:
+    if len(contraseña) > 8:
+        return True
+    return False
+
+def una_minuscula (contraseña:str)->bool:
+    for letra in range(len(contraseña)):
+        if 'a' <= contraseña[letra] <='z':
+            return True
+    return False
+
+def una_mayucula (contraseña:str)->bool:
+    for letra in range(len(contraseña)):
+        if 'A' <= contraseña[letra] <='Z':
+            return True
+    return False
+
+def un_digito (contraseña:str)->bool:
+    for letra in range(len(contraseña)):
+        if '0' <= contraseña[letra] <='9':
+            return True
+    return False
+
+#print(analizar_contra("HolaG7holag"))
+
 #ej 1.8)
 #ej 1.9)
 #ej 1.10)
 
 #----------------------------------------------------
 #ej 2.1)
+def cambiar_los_pares_por_0(lista: list[int]) -> None:
+    for i in range(len(lista)):
+        if i % 2 == 0:
+            lista[i] = 0
+    #print(cambiar_los_pares_por_0([1,2,3,4,5,6,7,8,9,10]))
+
 #ej 2.2)
 #ej 2.3)
 #ej 2.4)
@@ -69,6 +123,15 @@ def ordenados(s:list)->bool:
 #----------------------------------------------------
 #ej 5.1)
 #ej 5.2)
+def pertenece_a_cada_uno_version_2(s:list[list[int]], e:int,res:list[bool])->None:
+    res.clear()
+    for i in s:
+        res.append(pertenece(i, e))
+e = 4
+s = [[1,2,3],[33,55,10],[22,55,1,4]]
+res = []
+#pertenece_a_cada_uno_version_2(s,e,res)
+#print(res)
+
 #ej 5.3)
 #ej 5.4)
-#ej 5.5)
