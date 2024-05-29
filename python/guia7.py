@@ -4,7 +4,7 @@ def pertenece (s:list ,e:int)->bool:
         if (s[i] == e):
             return True
     return False
-#print(pertenece([1,2,3,4,5,6],0))
+#print(pertenece(['a','b','c','d'],'z'))
 def pertenece_2 (s:list ,e:int)->bool:
     i = 0
     while i < len(s):
@@ -123,28 +123,118 @@ def saldo(transacciones:float)->float:
 #saldo([("I",2000), ("R", 20),("R", 1000),("I", 300)])
 
 #ej 1.9)
-#ej 1.10)
+def vocales_distintas(palabra:str)->bool:
+    palabra = palabra.lower()
+    vocales = ['a','e','i','o','u']
+    contador_de_vocales = 0
+    i = 0
+    while (i<len(palabra)) & (contador_de_vocales<3):
+        if pertenece (vocales,palabra[i]):
+            contador_de_vocales += 1
+            vocales.remove(palabra[i])
+        i += 1
+    if contador_de_vocales >= 3:
+        return True
+    return False
+#print(vocales_distintas("aiE"))
 
 #----------------------------------------------------
 #ej 2.1)
-def cambiar_los_pares_por_0(lista: list[int]) -> None:
+def cambiar_los_pares_por_0(lista: list[int]):
     for i in range(len(lista)):
         if i % 2 == 0:
             lista[i] = 0
-    #print(cambiar_los_pares_por_0([1,2,3,4,5,6,7,8,9,10]))
+    return lista
+#print(cambiar_los_pares_por_0([0,1,2,3,4,5,6,7,8,9,10]))
 
 #ej 2.2)
-#ej 2.3)
-#ej 2.4)
-#ej 2.5)
-#ej 2.6)
+def cambiar_los_pares_por_0_version_2(lista:list[int]):
+    nueva_lista = []
+    for i in lista:
+        if i % 2 == 0:
+            nueva_lista.append(0)
+        else:
+            nueva_lista.append(i)
+    return nueva_lista
+#print(cambiar_los_pares_por_0_version_2([0,1,2,3,4]))
 
+#ej 2.3)
+def sacar_vocales(s:list[str])->list[str]:
+   vocales = ['a','e','i','o','u']
+   i = 0
+   while (i<len(s)):
+       if pertenece(vocales,s[i]):
+           s.remove(s[i])
+       else: i += 1
+   return print(s) 
+#sacar_vocales(['a',' ','i','a','p'])
+
+#ej 2.4)
+def remplazar_vocales(s:list)->list:
+   vocales = ['a','e','i','o','u']
+   res = []  
+   for i in range(len(s)):
+       if pertenece(vocales, s[i]):
+           res.append("-")
+       else: res.append(s[i])
+   return res 
+#print(remplazar_vocales("hola"))
+
+#ej 2.5)
+def da_vuelta_str(s:list)->list:
+    nueva_palabra:str  = ""  
+    for i in range(len(s)-1 , -1 , -1 ):
+        nueva_palabra += (s[i])
+    return nueva_palabra
+#print(da_vuelta_str("aloh"))
+
+#ej 2.6)
+def eleminar_repetidos(s:list)->list:
+    res = ""
+    for i in range(len(s)):
+        if not(s[i] in res):
+            res += s[i]
+    return res
+#print(eleminar_repetidos("aadaaaadfe"))
 #----------------------------------------------------
 #ej 3)
+def aprobado(notas:list)->int:
+    promedio_notas = (suma_total(notas))/len(notas) 
+    for i in range(len(notas)):
+        if (notas[i] < 4) or (promedio_notas < 4):
+            return 3
+    if 4 <= promedio_notas <7:
+            return 2
+    else: return 1
+#print(aprobado([10,4,9,9]))
 
 #----------------------------------------------------
 #ej 4.1)
+def lista_de_nombres_hasta_listo()->list[str]:
+    nombre:str = input("lista de estudiantes hatsa listo: ")
+    res:list[str] = []
+
+    while nombre != "listo":
+        res.append(nombre)
+        nombre = input("lista de estudiantes hatsa listo: ")
+    return res
+#print(lista_de_nombres_hasta_listo())
+
 #ej 4.2)
+def sube():
+    saldo = 0
+    historial:list = []
+    tipo_de_operacion = ""
+    while tipo_de_operacion != "X":
+        tipo_de_operacion = input("OPERACION A REALIZAR: ")
+        if tipo_de_operacion == "C":
+            historial.append(("C", input("monto")))
+        elif tipo_de_operacion == "D":
+            historial.append(("D", input("monto")))
+        else: tipo_de_operacion = "X"
+    return historial
+#print(sube())
+
 #ej 4.3)
 
 #----------------------------------------------------
