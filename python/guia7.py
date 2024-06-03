@@ -1,3 +1,6 @@
+import numpy as np
+
+
 #ej 1.1)
 def pertenece (s:list ,e:int)->bool:
     for i in range (0,len(s),1):
@@ -112,7 +115,6 @@ def saldo(transacciones:float)->float:
 #saldo([("I",2000), ("R", 20),("R", 1000),("I", 300)])
 
 #ej 1.9)
-#ej 1.10)
 def vocales_distintas(palabra:str)->bool:
     palabra = palabra.lower()
     vocales = ['a','e','i','o','u']
@@ -173,7 +175,6 @@ def remplazar_vocales(s:list)->list:
 #print(remplazar_vocales("hola"))
 
 #ej 2.5)
-#ej 2.6)
 def da_vuelta_str(s:list)->list:
     nueva_palabra:str  = ""  
     for i in range(len(s)-1 , -1 , -1 ):
@@ -229,9 +230,36 @@ def sube():
 #print(sube())
 
 #ej 4.3)
+def siete_y_medio():
+    numeros_posibles:list[int] = [0,1,2,3,4,5,6,7,10,11,12]
+    suma_total:int = random.choice(numeros_posibles)
+
+    historial:list[int] = []
+    historial.append(suma_total)
+
+    if suma_total < 10:
+        suma_total = suma_total
+    else: suma_total = 0.5 
+    
+    while input("pedir o plantarse? ") == "pedir":
+        x = random.choice(numeros_posibles)
+        suma_total += x
+        historial.append(x)
+        
+    if suma_total < 7.6:
+        res = "ganaste"
+    else: res = "perdiste"
+
+    res_total = f"""{res}
+historial: {historial}
+suma total: {suma_total}"""
+
+    return print(res_total)
+#siete_y_medio()
 
 #----------------------------------------------------
 #ej 5.1)
+
 #ej 5.2)
 def pertenece_a_cada_uno_version_2(s:list[list[int]], e:int,res:list[bool])->None:
     res.clear()
@@ -242,5 +270,25 @@ s = [[1,2,3],[33,55,10],[22,55,1,4]]
 res = []
 #pertenece_a_cada_uno_version_2(s,e,res)
 #print(res)
+
 #ej 5.3)
+def es_matriz(s:list[list[int]])-> bool:
+    if len(s) == 0: 
+        return False
+    modulo_para_todos = len(s[0])
+    for lista in s:
+        if len(lista) != modulo_para_todos:
+            return False
+    return True
+#print(es_matriz([[1,1,1],[1,2,0],[5,5,4],[2,2,1,2]])) 
+
 #ej 5.4)
+def filas_ordenadas(m:list[list[int]]):
+    res:list[bool] = []
+    for i in range(len(m)):
+        res.append(ordenanda(m[i]))
+    return res  
+#print(filas_ordenadas([[1,2,3],[1],[5,5,4],[2,5,9,20]]))
+
+#ej 5.5)
+
