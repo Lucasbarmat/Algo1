@@ -1,4 +1,4 @@
-import numpy as np
+import random
 
 
 #ej 1.1)
@@ -233,29 +233,35 @@ def sube():
 def siete_y_medio():
     numeros_posibles:list[int] = [0,1,2,3,4,5,6,7,10,11,12]
     suma_total:int = random.choice(numeros_posibles)
-
     historial:list[int] = []
     historial.append(suma_total)
-
+    print("Tu carta es el",suma_total)
     if suma_total < 10:
         suma_total = suma_total
     else: suma_total = 0.5 
-    
+
     while input("pedir o plantarse? ") == "pedir":
         x = random.choice(numeros_posibles)
-        suma_total += x
         historial.append(x)
-        
-    if suma_total < 7.6:
-        res = "ganaste"
-    else: res = "perdiste"
+        print("Tu carta es el",x)
+        if x < 10:
+            x = x
+        else: x = 0.5 
+        suma_total += x
+        print("La suma total es de",suma_total)
 
-    res_total = f"""{res}
+        if suma_total < 7.6:
+            res = "ganaste"
+        else: return f"""PERDISTE
+suma total: {suma_total}
+historial: {historial}"""
+
+    return f"""{res}
 historial: {historial}
 suma total: {suma_total}"""
 
-    return print(res_total)
-#siete_y_medio()
+#print(siete_y_medio())
+
 
 #----------------------------------------------------
 #ej 5.1)
@@ -287,8 +293,8 @@ def filas_ordenadas(m:list[list[int]]):
     res:list[bool] = []
     for i in range(len(m)):
         res.append(ordenanda(m[i]))
+        res.pop 
     return res  
 #print(filas_ordenadas([[1,2,3],[1],[5,5,4],[2,5,9,20]]))
 
-#ej 5.5)
 
