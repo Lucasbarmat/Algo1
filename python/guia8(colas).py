@@ -3,10 +3,6 @@ import random
 
 
 #ej13)
-
-
-
-
 def generar_numeros_al_azar(cantidad:int,desde:int,hasta:int)->Cola[int]:
     c = Cola()
     for _ in range(cantidad):
@@ -46,7 +42,7 @@ def pertenece(numero:int, lista:list[int])->bool:
 def jugar_carton_de_bingo(carton:list[int], bolillero:Cola[int])->int:
     cantidad_sin_marcar:int = len(carton)
     jugadas:int = 0
-    bolilleroAUX: Cola = Cola()
+    bolilleroAUX:Cola = Cola()
     
     while cantidad_sin_marcar>0:
         num:int = bolillero.get()
@@ -81,28 +77,3 @@ print(jugar_carton_de_bingo([12,20,33,41,5,26,71,80,19,10,11,13], armar_secuenci
 """
 
 
-
-#ej19)
-def agrupar_por_longitud(nombre_archivo:str)->dict:
-    diccionario = {}
-    f = open(nombre_archivo, "r")
-
-    def in_dict(n:int, diccionario:dict):
-        if n in diccionario:
-            diccionario[n] = diccionario[n] + 1
-        else: 
-            diccionario[n] = 1
-    lenPalabra = 0
-    for line in f.readlines():
-        for letra in line:
-            if letra == " " or letra == "\n":
-                in_dict(lenPalabra, diccionario)
-                lenPalabra = 0
-            else: 
-                lenPalabra += 1
-
-    if lenPalabra != 0:
-        in_dict(lenPalabra, diccionario)
-    
-    f.close()
-    return diccionario
