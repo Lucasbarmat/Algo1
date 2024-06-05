@@ -1,19 +1,16 @@
 from queue import LifoQueue as Pila
 import random
 
-#8
-
+#ej8)
 def generar_nros_al_azar(cantidad: int, desde: int, hasta: int) -> Pila[int]:
     p = Pila()
     while cantidad > 0:
         p.put(random.randint(desde, hasta))
         cantidad -= 1
     return p
-
 #print(generar_nros_al_azar(1, 0, 4).queue)
 
-#9
-
+#ej9)
 def cantidad_elementos(p: Pila) -> int:
     cantidad = 0
     pila_vacia: Pila = Pila()
@@ -24,13 +21,11 @@ def cantidad_elementos(p: Pila) -> int:
     while not pila_vacia.empty():
         sacar2= pila_vacia.get()
         p.put(sacar2)
-    print(p.queue)
+    #print(p.queue)
     return cantidad
+#print(cantidad_elementos(generar_nros_al_azar(9, 0, 4)))
 
-#print(cantidad_elementos(generar_nros_al_azar(4, 0, 4)))
-
-#10
-
+#ej10)
 def maximo(lista: list[int]) -> int:
     maximo = lista[0]
     for numero in lista:
@@ -51,8 +46,7 @@ def buscar_el_maximo(p: Pila[int]) -> int:
     return x
 
 
-#ej11
-
+#ej11)
 def esta_bien_balanceada(formula:str)->bool:
     operaciones = ["+","-","x","/"]
     for i in range(len(formula)):
@@ -66,5 +60,28 @@ def esta_bien_balanceada(formula:str)->bool:
             if ")" not in formula[i:]:
                 return False        
     return True
-print(esta_bien_balanceada("1 + 2 2 x 3 = ( 2 0 / 5 ) )"))
-     
+#print(esta_bien_balanceada("1 + 2 2 x 3 = ( 2 0 / 5 ) )"))
+
+#ej12)
+def evalucar_expresiones(s:str)->float:
+    p:Pila = Pila()
+    operaciones = ["+","-","*","/"]
+    for i in range(len(s)):
+        if s[i] not in operaciones and s[i] != " ":
+            p.put((s[i]))
+        elif s[i] in operaciones:
+            segundo_elemento:float = p.get()
+            primer_elemento:float = p.get()
+            if s[i] == "+":
+                res:float = (primer_elemento + segundo_elemento)
+            elif s[i] == "-":
+                res:float = primer_elemento - segundo_elemento
+            elif s[i] == "*":
+                res:float = primer_elemento * segundo_elemento
+            elif s[i] == "/":
+                res:float = primer_elemento / segundo_elemento
+            p.put(res)
+    return p.get()
+#print(evalucar_expresiones("3 1 + 5 +"))
+
+
