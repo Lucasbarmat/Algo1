@@ -1,3 +1,4 @@
+#ej1)
 def ind_nesima_aparicion(s: list, n: int, colectivo: int) -> int:
     contador:int = 0
     for i in range(len(s)):
@@ -13,7 +14,7 @@ def ind_nesima_aparicion(s: list, n: int, colectivo: int) -> int:
 #print(ind_nesima_aparicion([7, 1, 7, 7, 1, 1, 7],2,7))4
 
 
-
+#ej2)
 def es_par(numero:int)->bool:
     if numero == 0:
         return True
@@ -36,6 +37,23 @@ def mezclar(s1:list[int],s2:list[int])->list:
     return res
 #print(mezclar([1, 3, 0, 1],[4, 0, 2, 3]))
 
+
+
+#ej3)
+def frecuencia_posiciones_por_caballo(caballos:list[int], carreras:dict[str,str:list[str]])->dict[str,int:list[int]]:
+    res:dict = {}
+    for i in range(len(caballos)):
+        lista_ceros = [0]*len(caballos)
+        for e, v in carreras.items():
+            for n in range(len(v)):
+                if caballos[i] == v[n]:
+                    lista_ceros[n] += 1
+                    res[caballos[i]] = lista_ceros
+    return print(res) 
+#frecuencia_posiciones_por_caballo(["linda", "petisa", "mister", "luck" ],{"carrera1":["linda", "petisa", "petisa", "luck"],"carrera2":["linda", "mister", "petisa", "luck"]})
+
+
+#ej4)
 def fila_capicua (s:list[int]) -> bool:
     i = 0
     while (len(s)/2) > i:
