@@ -27,8 +27,6 @@ def clonar_sin_comentarios(nombre_archivo: str):
 
     o.close
     o2.close
-print(clonar_sin_comentarios("prueba.py"))
+#print(clonar_sin_comentarios("prueba.py"))
             
    
-
-    
