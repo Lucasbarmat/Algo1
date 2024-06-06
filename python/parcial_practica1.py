@@ -73,3 +73,36 @@ def matriz_capicua(s:list[list[int]]) -> bool:
 #print(matriz_capicua([[1,2,2,1],[-5,6,-5],[1,1,1,1]]))
 
 
+# Ejercicio 1
+#
+#  problema ultima_aparicion (s: seq⟨Z⟩, e: Z) : Z {
+#    requiere: {e pertenece a s }
+#    asegura: {res es la posición de la última aparición de e en s}
+#  }
+
+# Por ejemplo, dados
+#   s = [-1,4,0,4,100,0,100,0,-1,-1]    10
+#       [0, 1,2,3, 4, 5, 6, 7, 8, 9]  
+#   e = 0
+# se debería devolver res=7
+
+#recorro la lista de atras para adelante para asegurarme de que la aparicion del elemento que busco sea la ultima en la lista
+
+
+def ultima_aparicion(s:list[int], numero:int)->int:
+    contador:int = 0
+    res:int = 0
+    while contador < len(s):
+        if s[contador] == numero:
+            res = contador
+        contador += 1
+    return res
+#print(ultima_aparicion([-1,4,0,4,100,0,100,0,-1,0],-1))
+
+def 
+
+
+
+
+
+
