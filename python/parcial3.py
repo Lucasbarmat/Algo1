@@ -138,5 +138,5 @@ def cuenta_posiciones_por_nacion(naciones:list[int], torneos:dict[int,list[str]]
             puesto_nacion = torneos[torneo][i]
             res[puesto_nacion][i] = res[puesto_nacion][i] + 1
     return res
-print(cuenta_posiciones_por_nacion(["arg", "aus", "nz", "sud"],{2023:["nz", "sud", "arg", "aus"],2022:["nz", "sud", "aus", "arg"]}))
+#print(cuenta_posiciones_por_nacion(["arg", "aus", "nz", "sud"],{2023:["nz", "sud", "arg", "aus"],2022:["nz", "sud", "aus", "arg"]}))
     
