@@ -15,9 +15,15 @@ def generar_numeros_al_azar(cantidad:int,desde:int,hasta:int)->Cola[int]:
 #ej14)
 def cantiad_de_elementos(c:Cola)->int:
     contador = 0
-    while c.empty() != True:
-        c.get()
+    cAUX:Cola = Cola()
+    while not c.empty():
+        x = c.get()
         contador += 1
+        cAUX.put(x) 
+    while not cAUX.empty():
+        x = cAUX.get()
+        c.put(x)    
+    print(c.queue)
     return contador
 
 #print(cantiad_de_elementos(generar_numeros_al_azar(9,40,50)))
@@ -137,7 +143,7 @@ def atencion_a_clientes(c:Cola[(str,int,bool,bool)])->Cola[(str,int,bool,bool)]:
         sacar = cAUX.get()
         c.put(sacar)
     #print(c.queue)
-atencion_a_clientes(generar_cola([("f",1,True,False),("f",2,False,True),("f",3,True,True),("f",4,False,False),("f",5,True,True),("f",6,False,True)]))
+#atencion_a_clientes(generar_cola([("f",1,True,False),("f",2,False,True),("f",3,True,True),("f",4,False,False),("f",5,True,True),("f",6,False,True)]))
 
 
     

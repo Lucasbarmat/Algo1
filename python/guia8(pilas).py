@@ -13,17 +13,17 @@ def generar_nros_al_azar(cantidad: int, desde: int, hasta: int) -> Pila[int]:
 #ej9)
 def cantidad_elementos(p: Pila) -> int:
     cantidad = 0
-    pila_vacia: Pila = Pila()
+    pAUX:Pila = Pila()
     while not p.empty():
-        sacar = p.get()
+        x = p.get()
+        pAUX.put(x)
         cantidad += 1
-        pila_vacia.put(sacar)
-    while not pila_vacia.empty():
-        sacar2= pila_vacia.get()
-        p.put(sacar2)
-    #print(p.queue)
+    while not pAUX.empty():
+        x = pAUX.get()
+        p.put(x)
     return cantidad
-#print(cantidad_elementos(generar_nros_al_azar(9, 0, 4)))
+print(cantidad_elementos(generar_nros_al_azar(10, 0, 4)))
+
 
 #ej10)
 def maximo(lista: list[int]) -> int:
