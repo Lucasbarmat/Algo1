@@ -90,8 +90,7 @@ visitar_sitio(historiales,"lucas", "ds")
 x = list(historiales.items())
 print(x)
 
-     
-
+    
 #ej23.1)
 def agregar_productos(inventario: dict[str, dict[int, int]], nombre: str, precio: int, cantidad: int):
         inventario[nombre] = {"precio": precio, "cantidad": cantidad}

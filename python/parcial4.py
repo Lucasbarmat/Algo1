@@ -53,7 +53,7 @@ def verificar_transacciones(s:str)->int:
             return (f"el saldo final es: {res} pesos")
   
     return (f"el saldo final es: {res} pesos")
-#print(verificar_transacciones("rvvvvvsvsvvvvvsvvvvvvvvvvvvvvvvsvvvvv"))
+#print(verificar_transacciones("ssrvvrrvvsvvsxrvvv"))
           
 
 """
@@ -174,6 +174,7 @@ def es_sudoku_valido(m:list[list[int]])->bool:
             return False
         
     return True
+"""
 print(es_sudoku_valido([
 [1, 2, 3, 4, 5, 6, 7, 8, 9],
 [2, 3, 4, 5, 6, 7, 8, 9, 1],
@@ -186,3 +187,4 @@ print(es_sudoku_valido([
 [9, 1, 2, 3, 4, 5, 6, 7, 8]
 ]))
 
+"""

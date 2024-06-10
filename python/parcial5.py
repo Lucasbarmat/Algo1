@@ -98,13 +98,13 @@ elem= 1; M = [
 se debería devolver res = [true, true, true, false, false]
 """
 def elem_en_pos_pares(matriz:list[list[int]],elem:int)->list[bool]:
-    res:list[bool] = [False] * 5
+    res:list[bool] = [False] * len(matriz)
     for i in range(len(matriz)):
         for j in range(len(matriz[0])):
             if j%2==0 and matriz[i][j] == elem:
                 res[i] = True             
     return print(res)
-#elem_en_pos_pares([[3, 2, 3, 4, 5, 6, 7, 8, 9],[9, 8, 7, 6, 4, 5, 3, 2, 1],[0, 0, 0, 0, 0, 0, 9, 0, 0],[0, 0, 0, 0, 0, 4, 0, 0, 0],[0, 1, 0, 0, 6, 0, 0, 1, 1],], 1)
+elem_en_pos_pares([[3, 2, 3, 4, 5, 6, 7, 8, 9],[9, 8, 7, 6, 4, 5, 3, 2, 1],[0, 0, 0, 0, 0, 0, 9, 0, 0],[0, 0, 0, 0, 0, 4, 0, 0, 0],[0, 1, 0, 0, 6, 0, 0, 1, 1],], 1)
 
 
 """
