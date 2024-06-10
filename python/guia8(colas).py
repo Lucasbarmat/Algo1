@@ -137,7 +137,7 @@ def atencion_a_clientes(c:Cola[(str,int,bool,bool)])->Cola[(str,int,bool,bool)]:
         sacar = cAUX.get()
         c.put(sacar)
     #print(c.queue)
-#atencion_a_clientes(generar_cola([("f",1,True,False),("f",2,False,True),("f",3,True,True),("f",4,False,False),("f",5,True,True),("f",6,False,True)]))
+atencion_a_clientes(generar_cola([("f",1,True,False),("f",2,False,True),("f",3,True,True),("f",4,False,False),("f",5,True,True),("f",6,False,True)]))
 
 
     

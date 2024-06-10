@@ -74,25 +74,23 @@ def lamasfrecuente(nombre_archivo: str) -> str:
 
 #ej22) SE BUGEA, PERO ESTA BIEN
 
+
 def visitar_sitio(historiales: dict[str, Pila[str]], usuario: str, sitio: str):
     if usuario not in historiales:
-        p: Pila = Pila()
-        historiales[usuario] = p
-        historiales[usuario].put(sitio)
-    else: 
-        historiales[usuario] = historiales[usuario].put(sitio)
+        historiales[usuario] = Pila()
+    historiales[usuario].put(sitio)
 
-    return historiales
+    return print(historiales[usuario].queue) 
+    
 
 historiales = {}
-#print(visitar_sitio(historiales, "Usuario1", "google.com"))
-#print(visitar_sitio(historiales, "Usuario1", "facebook.com"))
-#print(visitar_sitio(historiales, "Usuario2", "youtube.com"))
+visitar_sitio(historiales,"lucas", "google")
+visitar_sitio(historiales,"lucas", "ds")
 
-#def navegacion_atras(historiales:dict[str, Pila[str]], usuario:str):
+x = list(historiales.items())
+print(x)
 
-
-
+     
 
 #ej23.1)
 def agregar_productos(inventario: dict[str, dict[int, int]], nombre: str, precio: int, cantidad: int):
